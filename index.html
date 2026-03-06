@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Busca de Clientes</title>
+    
+</head>
+<body>
+
+    <header>
+        <h1>Busca de Clientes</h1>
+    </header>
+
+    <div class="container">
+        <input type="text" id="searchInput" class="search-bar" placeholder="Buscar por nome ou cidade..." onkeyup="searchClients()">
+
+        <ul id="clientList" class="client-list">
+            <li><span>João Silva</span> - São Paulo</li>
+            <li><span>Maria Oliveira</span> - Rio de Janeiro</li>
+            <li><span>Ana Costa</span> - Belo Horizonte</li>
+            <li><span>Carlos Pereira</span> - Curitiba</li>
+            <li><span>Fernanda Lima</span> - Salvador</li>
+        </ul>
+    </div>
+
+    <script>
+        function searchClients() {
+            var input, filter, ul, li, span, i, txtValue;
+            input = document.getElementById('searchInput');
+            filter = input.value.toLowerCase();
+            ul = document.getElementById("clientList");
+            li = ul.getElementsByTagName('li');
+
+            for (i = 0; i < li.length; i++) {
+                span = li[i].getElementsByTagName("span")[0];
+                txtValue = span.textContent || span.innerText;
+                if (txtValue.toLowerCase().indexOf(filter) > -1) {
+                    li[i].style.display = "";
+                } else {
+                    li[i].style.display = "none";
+                }
+            }
+        }
+    </script>
+
+</body>
+</html>
